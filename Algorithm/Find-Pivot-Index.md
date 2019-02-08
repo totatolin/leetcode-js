@@ -22,7 +22,7 @@ Explanation:
 There is no index that satisfies the conditions in the problem statement.
 ```
 
-#### 思路：先运算所有数字的总和，然后遍历数组，当找到的索引index满足左边的总和与右边总和相等时即找到pivot index。
+#### 思路：先运算所有数字的总和，然后遍历数组，当找到的索引index满足总量减去这个index的值除以二之后和左边的总和相等时即找到pivot index。时间复杂度O(N)，空间复杂度O(1)。
 
 ```
 var pivotIndex = function(nums) {
