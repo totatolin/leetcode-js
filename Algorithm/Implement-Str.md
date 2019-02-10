@@ -28,3 +28,4 @@ var strStr = function(haystack, needle) {
     return -1;
 }
 ```
+#### 思路2：kmp算法，可以更好的提高性能，时间复杂度为O(m+n)。
