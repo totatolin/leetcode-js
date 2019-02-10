@@ -12,7 +12,7 @@ Output: 2
 Input: haystack = "aaaaa", needle = "bba"
 Output: -1
 ```
-#### 思路1：正常匹配，将字符串中每个字母进行匹配，暴力方法，总体的时间复杂度为O(m*n)。
+#### 思路1：正常匹配，将字符串中每个字母进行匹配，暴力方法（BF算法：Brute Force），总体的时间复杂度为O(m*n)。
 
 ```
 var strStr = function(haystack, needle) {
