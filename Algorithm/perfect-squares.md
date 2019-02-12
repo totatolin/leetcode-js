@@ -45,4 +45,24 @@ function numSquares (n) {
 }
 console.log(numSquares(4));
 ```
+#### 思路2：使用动态规划算法，初始化遍历n，把所有的平方数置为1，其他数置为n。p()为当前数的最优解。可以推出：p(1)为1，p(2)为p(1)+1，p(3)为p(2)+1，p(4)为1，p(5)为p(4)+1或p(1)+1，p(6)为p(5)+1或p(2)+1。。。。以此类推
 
+```
+var numSquares = function(n){
+    var square_num = [];
+    for (var i=1; i<=n; i++){
+        square_num[i] = n;
+    }
+    for (var j=1; j*j<=n; j++){
+        square_num[j*j] = 1;
+    }
+    for (var a=1; a<=n; a++){
+        for(var b=1; b*b<n; b++){
+            if(square_num[a]>square_num[a-b*b]+1 && a>b*b){
+                square_num[a]=square_num[a-b*b]+1;
+            }
+        }
+    }
+    return square_num[n];
+};
+```
