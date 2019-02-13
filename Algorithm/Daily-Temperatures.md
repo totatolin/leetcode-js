@@ -18,4 +18,28 @@ var dailyTemperatures = function(temperatures) {
     return res;
 };
 ```
+#### 思路2：使用双指针方法，时间复杂度O(n)，空间复杂度O(1)。快指针向前，直到当快指针指向的值大于慢指针的指向值，此时将慢指针的值置为两指针之间的差值，重置快、慢指针到同一位置，即慢指针的下一个索引，以此类推。但是需要注意的是，当快指针超出数组时，直接将慢指针的值置为0，代表此时找不到满足情况的温度，再重置快、慢指针的位置。
 
+```
+var dailyTemperatures = function(T) {
+    var slow = 0,
+        fast = 0;
+    while (slow < T.length) {
+        if (fast === T.length - 1) {
+            T[slow] = 0;
+            slow++;
+            fast = slow;
+        } else {
+            fast++;
+            if (T[fast] > T[slow]) {
+                T[slow] = fast - slow;
+                slow++;
+                if (fast - slow > 0) {
+                    fast = slow;
+                }
+            }
+        }
+    }
+    return T;
+};
+```
