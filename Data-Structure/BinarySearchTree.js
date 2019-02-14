@@ -28,6 +28,39 @@ function BinarySearchTree () {
 			}
 		}
 	}
+	// 中序遍历
+	this.inOrderTraverse = function () {
+		inOrderTraverseNode(this.root);
+		function inOrderTraverseNode (node) {
+			if (node !== null) {
+				inOrderTraverseNode(node.left);
+				console.log(node.key);
+				inOrderTraverseNode(node.right);
+			}
+		}
+	}
+	// 先序遍历
+	this.preOrderTraverse = function () {
+		preOrderTraverseNode(this.root);
+		function preOrderTraverseNode (node) {
+			if (node !== null) {
+				console.log(node.key);
+				preOrderTraverseNode(node.left);
+				preOrderTraverseNode(node.right);
+			}
+		}
+	}
+	// 后序遍历
+	this.postOrderTraverse = function () {
+		postOrderTraverseNode(this.root);
+		function postOrderTraverseNode (node) {
+			if (node !== null) {
+				postOrderTraverseNode(node.left);
+				console.log(node.key);
+				postOrderTraverseNode(node.right);
+			}
+		}
+	}
 }
 var tree = new BinarySearchTree();
 tree.insert(11);
