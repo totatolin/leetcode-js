@@ -5,7 +5,7 @@ function LinkedList () {
 	}
 	let length = 0;
 	let head = null;
-	// 向列表尾部添加新元素
+	// 向链表尾部添加新元素
 	this.append = function (element) {
 		let node = new Node(element),
 			current;
@@ -24,7 +24,32 @@ function LinkedList () {
 		}
 		length++;
 	}
-	// 从列表的特定位置移除一项
+	// 从链表的特定位置添加一项
+	this.insert = function (position, element) {
+		// 检查越界值
+		if (position >= 0 && position <= length) {
+			let node = new Node(element),
+				current = head,
+				previous,
+				index = 0;
+			if (position === 0) { // 在第一个位置添加
+				node.next = current;
+				head = node;
+			} else {
+				while (index++ < position) {
+					previous = current;
+					current = current.next;
+				}
+				node.next = current;
+				previous.next = node;
+			}
+			length++;
+			return true;
+		} else {
+			return false;
+		}
+	}
+	// 从链表的特定位置移除一项
 	this.removeAt = function (position) {
 		// 检查越界值
 		if (position > -1 && position < length) {
