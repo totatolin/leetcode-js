@@ -1,3 +1,4 @@
+
 function BinarySearchTree () {
 	var Node = function (key) {
 		this.key = key;
@@ -28,7 +29,7 @@ function BinarySearchTree () {
 			}
 		}
 	}
-	// 中序遍历
+	// 中序遍历(递归)
 	this.inOrderTraverse = function () {
 		inOrderTraverseNode(this.root);
 		function inOrderTraverseNode (node) {
@@ -39,7 +40,7 @@ function BinarySearchTree () {
 			}
 		}
 	}
-	// 先序遍历
+	// 先序遍历(递归)
 	this.preOrderTraverse = function () {
 		preOrderTraverseNode(this.root);
 		function preOrderTraverseNode (node) {
@@ -50,14 +51,30 @@ function BinarySearchTree () {
 			}
 		}
 	}
-	// 后序遍历
+	// 后序遍历(递归)
 	this.postOrderTraverse = function () {
 		postOrderTraverseNode(this.root);
 		function postOrderTraverseNode (node) {
 			if (node !== null) {
 				postOrderTraverseNode(node.left);
-				console.log(node.key);
 				postOrderTraverseNode(node.right);
+				console.log(node.key);
+			}
+		}
+	}
+	// 中序遍历(非递归)
+	this.inOrderTraverse2 = function () {
+	    var stack = [];
+		var cur = this.root;
+		while (cur || stack.length !== 0) {
+			while (cur !== null) {
+				stack.push(cur);
+				cur = cur.left;
+			}
+			if (stack.length) {
+				var node = stack.pop();
+				console.log(node.val);
+				cur = node.right;
 			}
 		}
 	}
