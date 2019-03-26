@@ -78,6 +78,22 @@ function BinarySearchTree () {
 			}
 		}
 	}
+	// 先序遍历(非递归)
+	this.preOrderTraverse2 = function () {
+	    var stack = [];
+		var cur = this.root;
+		while (cur || stack.length !== 0) {
+			while (cur !== null) {
+				stack.push(cur);
+				console.log(cur.val);
+				cur = cur.left;
+			}
+			if (stack.length) {
+				var node = stack.pop();
+				cur = node.right;
+			}
+		}
+	}
 }
 var tree = new BinarySearchTree();
 tree.insert(11);
