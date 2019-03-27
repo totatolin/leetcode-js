@@ -21,24 +21,14 @@
 
 ```
 var hasPathSum = function(root, sum) {
-    var a = false,
-        b = false;
-
-    if(root === null)
-        return false;
-    
-    sum -= root.val;
-    
-    if(sum === 0 && root.left === null && root.right === null)
-        return true;
-    
-    if(root.left !== null)
-        a = hasPathSum(root.left, sum);
-    if(root.right !== null)
-        b = hasPathSum(root.right, sum);
-    
-    return a || b;
-    
+    function temp (root, sum) {
+    if (root === null) return false;
+    sum = sum - root.val;
+    if (root.left === null && root.right === null && sum === 0) return true;
+    if (root.left === null && root.right === null) return false;
+    return temp(root.left, sum) || temp(root.right, sum);
+  }
+  return temp(root, sum);
 };
 ```
 
