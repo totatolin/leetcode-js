@@ -44,3 +44,18 @@ function postOrderTraverse (root) {
 	postOrder(root);
 	return arr;
 }
+
+// 后序遍历（非递归），后序遍历可以看作是镜像的先序遍历再颠倒位置
+function postOrderTraverse2 (root) {
+	var arr = [],
+		stack = [];
+	stack.push(root);
+	while (stack.length) {
+		var current = stack.pop();
+		arr.push(current.val);
+		for (var i = 0; i < current.children.length; i++) {
+			stack.push(current[i]);
+		}
+	}
+	return arr.reverse();
+}
