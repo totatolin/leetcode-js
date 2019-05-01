@@ -29,3 +29,18 @@ function preOrderTraverse2 (root) {
 	}
 	return arr;
 }
+
+// 后序遍历（递归）
+function postOrderTraverse (root) {
+	if (root === null) return [];
+	var arr = [];
+	function postOrder (node) {
+		if (node === null) return;
+		for (var i = 0; i < node.children.length; i++) {
+			postOrder(node.children[i]);
+		}
+		arr.push(node.val);
+	}
+	postOrder(root);
+	return arr;
+}
