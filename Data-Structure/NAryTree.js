@@ -70,10 +70,10 @@ function levelOrderTraverse (root) {
 		if (!node) return;
 		if (arr.length <= level) {
 			arr.push([]);
-			arr[level].push(node.val);
-			for (var i = 0; i < node.children.length; i++) {
-				levelOrder(node.children[i], level + 1);
-			}
+		}
+		arr[level].push(node.val);
+		for (var i = 0; i < node.children.length; i++) {
+			levelOrder(node.children[i], level + 1);
 		}
 	}
 	levelOrder(root, 0);
