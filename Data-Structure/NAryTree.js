@@ -14,3 +14,18 @@ function preOrderTraverse (root) {
 	preOrder(root);
 	return arr;
 }
+
+// 先序遍历（非递归）
+function preOrderTraverse2 (root) {
+	var arr = [],
+		stack = [];
+	stack.push(root);
+	while (stack.length) {
+		var current = stack.pop();
+		arr.push(current.val);
+		for (var i = current.length - 1; i >= 0; i--) {
+			stack.push(current[i]);
+		}
+	}
+	return arr;
+}
